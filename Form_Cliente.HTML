@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Cliente</title>
+
+    <script>
+        function validarCliente() {
+            const nombre = document.getElementById("nombre").value.trim();
+            const email = document.getElementById("email").value.trim();
+
+            if (nombre === "" || email === "") {
+                alert("Nombre y Email son obligatorios.");
+                return false;
+            }
+
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!regexEmail.test(email)) {
+                alert("Formato de email no válido.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+<h2>Registrar Cliente</h2>
+
+<form action="insert_cliente.php" method="POST" onsubmit="return validarCliente();">
+    Nombre: <input type="text" name="nombre" id="nombre"><br><br>
+    Email: <input type="email" name="email" id="email"><br><br>
+    Dirección: <input type="text" name="direccion"><br><br>
+
+    <button type="submit">Registrar Cliente</button>
+</form>
+
+</body>
+</html>
